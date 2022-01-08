@@ -7,3 +7,8 @@ RUN npm i
 # we should later need to map the port of the host to the container port
 # this command does not do this automatically, it just specifies the port number
 EXPOSE 3000 
+# we create and set a group and user different from the root to 
+# prevent a hacker to be able to delete or change any files as 
+# a root user if he infiltrates
+RUN addgroup app && adduser -S -G app app
+USER app
